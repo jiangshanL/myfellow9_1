@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>轮播图</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        img{
+            margin: 0;
+            padding: 0;
+        }
+        ul,ol{
+            list-style: none;
+        }
+        #container{
+            width: 3264px;
+            height: 1952px;
+            margin: 100px auto;
+            position: relative;
+            top: 100px;
+            left: 50px;
+        }
+        #test{
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+        }
+        #test li{
+            width: 100px;
+            height: 100px;
+            background: black;
+            color: white;
+            float: left;
+            margin: 30px;
+            text-align: center;
+            line-height: 100px;
+            cursor: pointer;
+        }
+        #test li.selected{
+            background: orangered;
+        }
+        #content img.selected{
+            display: block;
+        }
+        #content img{
+            display: none;
+        }
+        #arrow{
+            position: absolute;
+            left: 20px;
+            bottom: 20px;
+        }
+        #arrow span{
+            width: 100px;
+            height: 100px;
+            background: black;
+            color: white;
+            float: left;
+            margin-right: 20px;
+            text-align: center;
+            line-height: 100px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <ul id="test">
+        <li class="selected">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <div id="content">
+        <img class="selected" src="烟雨漓江.jpg" alt=""/>
+        <img src="石老人.jpg" alt=""/>
+        <img src="园林.jpg" alt=""/>
+        <img src="秦淮河.jpg" alt=""/>
+    </div>
+    <div id="arrow">
+        <span id="left">&lt;</span>
+        <span id="right">&gt;</span>
+    </div>
+</div>
+<script>
+    var oContainer=document.getElementById("container");
+    var oTest=document.getElementById("test");
+    var aLi=oTest.getElementsByTagName("li");
+    var oContent=document.getElementById("content");
+    var aImg=oContent.getElementsByTagName("img");
+    var oLeft=document.getElementById("left");
+    var oRight=document.getElementById("right");
+    var iNow=0;
+    for(var i=0;i<aLi.length;i++){
+        aLi[i].index=i;
+        aLi[i].onmouseover=function(){
+            for(var i=0;i<aLi.length;i++){//所有li清空样式
+                aLi[i].className='';
+                aImg[i].className='';
+            }
+            //this.className='selected';
+            aLi[this.index].className='selected';
+            aImg[this.index].className='selected';
+        }
+    }
+    oRight.onclick=function(){
+        iNow=iNow+1;
+        if(iNow==aLi.length){
+            iNow=0;
+        }
+        for(var i=0;i<aLi.length;i++){//所有li清空样式
+            aLi[i].className='';
+            aImg[i].className='';
+        }
+        //this.className='selected';
+        aLi[iNow].className='selected';
+        aImg[iNow].className='selected';
+    };
+    oLeft.onclick=function(){
+        iNow=iNow-1;
+        if(iNow==-1){
+            iNow=aLi.length-1;
+        };
+        for(var i=0;i<aLi.length;i++){//所有li清空样式
+            aLi[i].className='';
+            aImg[i].className='';
+        }
+        //this.className='selected';
+        aLi[iNow].className='selected';
+        aImg[iNow].className='selected';
+    };
+    var timer=setInterval(function(){
+        oRight.onclick();
+    },1000);
+    oContainer.onmouseover=function(){
+        clearInterval(timer);
+    };
+    oContainer.onmouseout=function(){
+        timer=setInterval(function(){
+            oRight.onclick();
+        },1000);
+    };
+
+</script>
+</body>
+</html>
