@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        table
+            {
+                border: 0;
+                border-collapse:collapse;
+            }
+        td
+            {
+                font:normal 12px/17px Arial;
+                padding:2px;
+                width:100px;
+            }
+        tr
+            {
+                font:bold 12px/17px Arial;
+                text-align:left;
+                padding:4px;
+                border-bottom:1px solid #333;
+            }
+        .test{
+            background: greenyellow;
+
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr><td> </td>
+                <td>姓名</td><td>性别</td><td>暂住地</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="radio" name="choice" value=""/></td>
+                <td>赵一</td><td>男</td><td>杭州</td>
+            </tr>
+            <tr>
+                <td><input type="radio" name="choice" value=""/></td>
+                <td>Mr.qian</td><td>男</td><td>宁波</td>
+            </tr>
+            <tr>
+                <td><input type="radio" name="choice" value=""/></td>
+                <td>张三</td><td>男</td><td>金华</td>
+            </tr>
+            <tr>
+                <td><input type="radio" name="choice" value=""/></td>
+                <td>李四</td><td>男</td><td>舟山</td>
+            </tr>
+            <tr>
+                <td><input type="radio" name="choice" value=""/></td>
+                <td>王五</td><td>男</td><td>苏州</td>
+            </tr>
+            <tr>
+                <td><input type="radio" name="choice" value=""/></td>
+                <td>孙六</td><td>女</td><td>扬州</td>
+            </tr>
+            <tr>
+                <td><input type="radio" name="choice" value=""/></td>
+                <td>zhouqi</td><td>男</td><td>青岛</td>
+            </tr>
+        </tbody>
+    </table>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $("tr:odd").css("background-color","yellow");
+        $("td:contains(Mr.qian)").addClass("test");
+        $("tr:contains(李四)").addClass("test");
+        $("tr:contains(孙六)").addClass("test");
+        $("tr").click(function(){
+            $(this).addClass('selected').siblings().removeClass('selected').
+            end().find(':radio').prop('checked',true);
+        })
+
+    </script>
+</body>
+</html>
