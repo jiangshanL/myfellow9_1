@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>五环</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: #111111;
+            -webkit-perspective: 800px;
+        }
+        .circle,.circle::after{
+            width: 200px;
+            height: 200px;
+            border: 10px solid;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .circle::after{
+            content: "";
+            top: -10px;
+            left: -10px;
+        }
+        .blue{
+            border-color: blue;
+        }
+        .blue::after{
+            border-color:blue;
+            border-bottom-color: transparent;
+            z-index: 1;
+        }
+        .yellow{
+            border-color: yellow;
+            top: 0;
+            left: 230px;
+        }
+        .yellow::after{
+            border-color:yellow;
+            border-left-color: transparent;
+            z-index: 1;
+
+        }
+        .red{
+            border-color: red;
+            top: 0px;
+            left: 460px;
+        }
+        .red::after{
+            border-color:red;
+            z-index: 2;
+            border-left-color: transparent;
+        }
+        .green{
+            border-color: green;
+            top: 120px;
+            left: 115px;
+        }
+        .green::after{
+            border-color:green;
+
+        }
+        .white{
+            border-color: white;
+            top: 120px;
+            left: 345px;
+        }
+        .white::after{
+            border-color:white;
+            border-top-color: transparent;
+            z-index: 1;
+        }
+        #rings{
+            width: 500px;
+            height: 300px;
+            background: #000000;
+            -webkit-animation: xxx 5s ease 2s infinite;
+        }
+        @-webkit-keyframes xxx {
+            0%{
+
+            }
+            50%{
+                width: 600px;
+                height: 600px;
+                -webkit-transform: rotateY(360deg);
+            }
+            100%{
+                width: 700px;
+                height: 700px;
+                background: purple;
+                -webkit-transform: rotateY(720deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="rings">
+        <div class="circle blue"></div>
+        <div class="circle yellow"></div>
+        <div class="circle red"></div>
+        <div class="circle green"></div>
+        <div class="circle white"></div>
+    </div>
+
+
+</body>
+</html>
